@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_common">16dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+    <dimen name="margin_icons">3dp</dimen>
+</resources>
