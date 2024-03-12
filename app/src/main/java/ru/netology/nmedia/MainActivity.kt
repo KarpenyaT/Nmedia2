@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
             override fun onEdit(post: Post) {
                 viewModel.editById(post)
             }
+
+//            override fun cancelEdit(post: Post) {
+//                viewModel.cancelEdit()
+//            }
         }
         )
         viewModel.data.observe(this) { posts ->
@@ -52,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.recView.adapter = adapter
+
         binding.save.setOnClickListener {
             val text=binding.edit.text.toString().trim()
             if (text.isEmpty()){
@@ -76,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cancelingEdit.setOnClickListener {
+            viewModel.cancelEdit()
             binding.editGroup.visibility=View.GONE
             binding.editedMessage.text=""
             binding.edit.setText("")
