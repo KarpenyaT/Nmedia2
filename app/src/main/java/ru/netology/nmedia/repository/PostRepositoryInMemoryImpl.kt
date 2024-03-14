@@ -17,7 +17,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
                     "выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку " +
                     "перемен → http://netolo.gy/fyb",
             likedByMe = false,
-            likes = 0,
+            likeCount = 0,
             shareByMe = false,
             shareCount = 999,
             viewCount = 1
@@ -32,7 +32,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
                     "выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку " +
                     "перемен → http://netolo.gy/fyb",
             likedByMe = false,
-            likes = 1_099,
+            likeCount = 1_099,
             shareByMe = false,
             shareCount = 9_999,
             viewCount = 1
@@ -43,7 +43,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Освоение новой профессии — это не только открывающиеся возможности и перспективы, но и настоящий вызов самому себе. Приходится выходить из зоны комфорта и перестраивать привычный образ жизни: менять распорядок дня, искать время для занятий, быть готовым к возможным неудачам в начале пути. В блоге рассказали, как избежать стресса на курсах профпереподготовки → http://netolo.gy/fPD",
             published = "23 сентября в 10:12",
             likedByMe = false,
-            likes = 999_999,
+            likeCount = 999_999,
             shareByMe = false,
             shareCount = 1_099_999,
             viewCount = 1
@@ -55,7 +55,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
             published = "22 сентября в 10:14",
             likedByMe = false,
-            likes = 9_999_999,
+            likeCount = 9_999_999,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -66,7 +66,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Таймбоксинг — отличный способ навести порядок в своём календаре и разобраться с делами, которые долго откладывали на потом. Его главный принцип — на каждое дело заранее выделяется определённый отрезок времени. В это время вы работаете только над одной задачей, не переключаясь на другие. Собрали советы, которые помогут внедрить таймбоксинг \uD83D\uDC47\uD83C\uDFFB",
             published = "22 сентября в 10:12",
             likedByMe = false,
-            likes = 1,
+            likeCount = 1,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -77,7 +77,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "\uD83D\uDE80 24 сентября стартует новый поток бесплатного курса «Диджитал-старт: первый шаг к востребованной профессии» — за две недели вы попробуете себя в разных профессиях и определите, что подходит именно вам → http://netolo.gy/fQ",
             published = "21 сентября в 10:12",
             likedByMe = false,
-            likes = 1,
+            likeCount = 1,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -88,7 +88,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Диджитал давно стал частью нашей жизни: мы общаемся в социальных сетях и мессенджерах, заказываем еду, такси и оплачиваем счета через приложения.",
             published = "20 сентября в 10:14",
             likedByMe = false,
-            likes = 1,
+            likeCount = 1,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -99,7 +99,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Большая афиша мероприятий осени: конференции, выставки и хакатоны для жителей Москвы, Ульяновска и Новосибирска \uD83D\uDE09",
             published = "19 сентября в 14:12",
             likedByMe = false,
-            likes = 1,
+            likeCount = 1,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -110,7 +110,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Языков программирования много, и выбрать какой-то один бывает нелегко. Собрали подборку статей, которая поможет вам начать, если вы остановили свой выбор на JavaScript.",
             published = "19 сентября в 10:24",
             likedByMe = false,
-            likes = 1,
+            likeCount = 1,
             shareByMe = false,
             shareCount = 199999,
             viewCount = 1
@@ -125,7 +125,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
         posts = posts.map {
             if (it.id != id) it else it.copy(
                 likedByMe = !it.likedByMe,
-                likes = if (!it.likedByMe) it.likes + 1 else it.likes - 1
+                likeCount = if (!it.likedByMe) it.likeCount + 1 else it.likeCount - 1
             )
         }
         data.value = posts

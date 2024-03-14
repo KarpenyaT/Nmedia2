@@ -2,5 +2,11 @@
 <resources>
     <dimen name="padding_common">16dp</dimen>
     <dimen name="avatar_size">48dp</dimen>
-    <dimen name="margin_icons">3dp</dimen>
+    <dimen name="margin_icons">4dp</dimen>
+    <dimen name="common_spacing">16dp</dimen>
+    <dimen name="posts_avatar_size">48dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="checkbox_padding_start">8dp</dimen>
+    <dimen name="icon_button_padding">12dp</dimen>
+    <dimen name="icon_button_min_size">48dp</dimen>
 </resources>
