@@ -12,4 +12,7 @@
     <string name="edited">Редактирование</string>
     <string name="description_cancel_edit">Отменить изменения</string>
     <string name="description_save_post">Сохранить пост</string>
+    <string name="chooser_share_post">Поделиться</string>
+    s=<string name="add_post">Добавить пост</string>
+    <string name="video_image">Видео</string>
 </resources>

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Nmedia</string>
     <string name="description_post_author_avatar">Post author avatar</string>
-    <string name="description_post_menu" >Post menu</string>
+    <string name="description_post_menu">Post menu</string>
     <string name="description_post_likes">Post likes</string>
     <string name="description_post_share">Post share</string>
     <string name="count_likes" translatable="false">32</string>
@@ -14,4 +14,7 @@
     <string name="edited">Edit Message</string>
     <string name="description_cancel_edit">Canceling an edit</string>
     <string name="description_save_post">Save post</string>
+    <string name="chooser_share_post">Share</string>
+    <string name="add_post">Add post</string>
+    <string name="video_image">video</string>
 </resources>

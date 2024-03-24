@@ -1,4 +1,5 @@
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -10,12 +11,12 @@ import ru.netology.nmedia.dto.Post
 import java.text.DecimalFormat
 import kotlin.math.floor
 
-interface OnInteractionListener{
-    fun onLike(post:Post)
-    fun onShare(post:Post)
-    fun onRemove(post:Post)
-    fun onEdit(post:Post)
-    //fun cancelEdit(post: Post)
+interface OnInteractionListener {
+    fun onLike(post: Post)
+    fun onShare(post: Post)
+    fun onRemove(post: Post)
+    fun onEdit(post: Post)
+    fun onVideo(post: Post)
 
 
 }
@@ -27,6 +28,7 @@ class PostsAdapter(
         val view = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(view, OnInteractionListener)
     }
+
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
@@ -41,7 +43,7 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            likes.isChecked=post.likedByMe
+            likes.isChecked = post.likedByMe
             likes.setOnClickListener {
                 OnInteractionListener.onLike(post)
             }
@@ -52,26 +54,38 @@ class PostViewHolder(
             }
             share.text = formatNumber(post.shareCount)
 
-            viewedText.text = formatNumber(post.viewCount)
+            viewed.text = formatNumber(post.viewCount)
 
             menu.setOnClickListener {
-                PopupMenu(it.context,it).apply {
+                PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
                     setOnMenuItemClickListener { item ->
-                        when (item.itemId){
-                            R.id.remove->{
+                        when (item.itemId) {
+                            R.id.remove -> {
                                 OnInteractionListener.onRemove(post)
                                 true
                             }
-                            R.id.edit->{
+
+                            R.id.edit -> {
                                 OnInteractionListener.onEdit(post)
                                 true
                             }
-                            else->false
+
+                            else -> false
                         }
                     }
                 }.show()
             }
+            if (post.video != null) {
+                videoGroup.visibility = View.VISIBLE
+                videoImage.setOnClickListener {
+                    OnInteractionListener.onVideo(post)
+                }
+                videoPlay.setOnClickListener {
+                    OnInteractionListener.onVideo(post)
+                }
+            }
+
         }
     }
 
