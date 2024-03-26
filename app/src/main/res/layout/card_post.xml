@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/padding_common"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <ImageView
@@ -66,15 +67,46 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_common"
         android:autoLink="web"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/videoImage"
+        app:layout_constraintTop_toTopOf="@id/barrierBottom"
         tools:text="@sample/posts.json/data/content" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_common"
+        android:visibility="gone"
+        app:constraint_referenced_ids="videoImage,videoPlay" />
+
+    <ImageView
+        android:id="@+id/videoImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/video_image"
+        app:layout_constraintBottom_toTopOf="@id/barrierBeforIcons"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:srcCompat="@drawable/video_image" />
+
+    <ImageView
+        android:id="@+id/videoPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/video_image"
+        app:layout_constraintBottom_toBottomOf="@id/videoImage"
+        app:layout_constraintEnd_toEndOf="@id/videoImage"
+        app:layout_constraintStart_toStartOf="@id/videoImage"
+        app:layout_constraintTop_toTopOf="@id/videoImage"
+        app:srcCompat="@drawable/ic_play" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierBeforIcons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="likes,share,viewed,viewedText" />
+        app:constraint_referenced_ids="likes,share,viewed"
+        app:layout_constraintTop_toBottomOf="@id/videoImage" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -86,7 +118,7 @@
         android:contentDescription="@string/description_post_likes"
         app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforIcons"
         tools:text="@string/count_likes" />
 
 
@@ -99,28 +131,20 @@
         android:contentDescription="@string/description_post_share"
         app:icon="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforIcons"
         tools:text="@string/count_share" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/viewed"
+        style="@style/Widget.AppTheme.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_common"
-        android:layout_marginEnd="@dimen/margin_icons"
-        android:background="@android:color/transparent"
+        android:layout_marginStart="@dimen/margin_icons"
         android:contentDescription="@string/description_post_share"
-        android:src="@drawable/ic_views_24"
-        app:layout_constraintEnd_toStartOf="@id/viewedText"
-        app:layout_constraintTop_toBottomOf="@id/content" />
-
-    <TextView
-        android:id="@+id/viewedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/viewed"
+        app:icon="@drawable/ic_views_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/viewed"
-        tools:text="@string/count_viewed" />
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforIcons"
+        tools:text="@string/count_share" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
